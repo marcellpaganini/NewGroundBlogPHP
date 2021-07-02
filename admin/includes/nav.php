@@ -17,8 +17,8 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Posts <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">View Posts</a></li>
-              <li><a href="#">Add New Posts</a></li>
+              <li><a href="posts.php">View Posts</a></li>
+              <li><a href="posts.php?source=add_new">Add New Posts</a></li>
             </ul>
         </li>
         <li><a href=<?php echo "categories.php"?>>Categories</a></li>
