@@ -1,10 +1,18 @@
+<?php 
+    $query = "SELECT * FROM categories ORDER BY cat_id DESC LIMIT 6";
+    $result = mysqli_query($dbLink, $query);
+    $span = mysqli_num_rows($result);
+?>
 <div class="sidebar-box">
     <h3 class="heading">Categories</h3>
     <ul class="categories">
-        <li><a href="#">Food <span>(12)</span></a></li>
-        <li><a href="#">Travel <span>(22)</span></a></li>
-        <li><a href="#">Lifestyle <span>(37)</span></a></li>
-        <li><a href="#">Business <span>(42)</span></a></li>
-        <li><a href="#">Adventure <span>(14)</span></a></li>
+        <?php 
+            while ($row = mysqli_fetch_array($result)) {
+                $cat_id = $row['cat_id'];
+                $cat_title = $row['cat_title'];
+
+                echo "<li><a href=''>$cat_title <span>($span)</span></a></li>";
+            }
+        ?>
     </ul>
 </div>

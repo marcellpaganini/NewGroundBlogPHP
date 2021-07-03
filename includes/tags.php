@@ -1,17 +1,15 @@
+<?php 
+    $sql = "SELECT * FROM posts ORDER BY post_id LIMIT 5";
+    $result = mysqli_query($dbLink, $sql);
+?>
 <div class="sidebar-box">
     <h3 class="heading">Tags</h3>
     <ul class="tags">
-        <li><a href="#">Travel</a></li>
-        <li><a href="#">Adventure</a></li>
-        <li><a href="#">Food</a></li>
-        <li><a href="#">Lifestyle</a></li>
-        <li><a href="#">Business</a></li>
-        <li><a href="#">Freelancing</a></li>
-        <li><a href="#">Travel</a></li>
-        <li><a href="#">Adventure</a></li>
-        <li><a href="#">Food</a></li>
-        <li><a href="#">Lifestyle</a></li>
-        <li><a href="#">Business</a></li>
-        <li><a href="#">Freelancing</a></li>
+        <?php 
+            while($row = mysqli_fetch_assoc($result)) {
+                $tags = $row['post_tags'];
+                echo "<li><a href=''>$tags</a></li>";
+            }
+        ?>
     </ul>
 </div>
