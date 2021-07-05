@@ -9,7 +9,7 @@ function show_cat(){
     while($row = mysqli_fetch_array($result)){
         $cat_id = $row['cat_id'];
         $cat_title = $row['cat_title'];
-        echo "<a class='dropdown-item' href='category.php'>{$cat_title}</a>";
+        echo "<a class='dropdown-item' href='category.php?cat_id=$cat_id'>{$cat_title}</a>";
     }
 }
 ?>

@@ -1,6 +1,11 @@
-<?php 
-$query = "SELECT * FROM posts ORDER BY post_id DESC";
+<?php
+(isset($_GET['cat_id'])) ? $cat_id = $_GET['cat_id'] : header("Location: index.php"); 
+$query = "SELECT * FROM posts WHERE post_category_id = $cat_id";
 $result = mysqli_query($dbLink, $query);
+
+if(mysqli_num_rows($result) === 0){
+    echo "<h2>No posts in this category.</h2>";
+}{
 
 while($row = mysqli_fetch_assoc($result)){
     $post_id = $row['post_id'];
@@ -32,5 +37,5 @@ while($row = mysqli_fetch_assoc($result)){
 </div>
 
 <?php
-}
+}}
 ?>
