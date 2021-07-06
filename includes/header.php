@@ -1,9 +1,11 @@
 <?php include "admin/includes/db.php" ?>
+<?php include "classes/Comment.php" ?>
 <?php include "function.php" ?>
+<?php $comment_obj = new Comment($dbLink) ?>
 <!doctype html>
 <html lang="en">
   <head>
-    <title>New Ground &mdash; Minimal Blog Template</title>
+    <title>New Ground &mdash;</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

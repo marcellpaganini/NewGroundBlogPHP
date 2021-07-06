@@ -144,29 +144,36 @@
                 </li>
               </ul>
               <!-- END comment-list -->
-              
+              <?php 
+              if(isset($_GET['post'])) {
+                $id = $_GET['post'];
+                if(isset($_POST['comment'])){
+                  $name = $_POST['name'];
+                  $email = $_POST['email'];
+                  $body = $_POST['body'];
+                  
+                  $comment_obj->addComments($name, $email, $body, $id);
+                }
+              }
+              ?>
+
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">Leave a comment</h3>
-                <form action="#" class="p-5 bg-light">
+                <form action="single.php?post=<?php echo $post_id; ?>" method="POST" class="p-5 bg-light">
                   <div class="form-group">
                     <label for="name">Name *</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" name="name" id="name">
                   </div>
                   <div class="form-group">
                     <label for="email">Email *</label>
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" name="email" class="form-control" id="email">
                   </div>
-                  <div class="form-group">
-                    <label for="website">Website</label>
-                    <input type="url" class="form-control" id="website">
-                  </div>
-
                   <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea name="body" id="message" cols="30" rows="10" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
-                    <input type="submit" value="Post Comment" class="btn btn-primary">
+                    <input type="submit" value="Post Comment" name="comment" class="btn btn-primary">
                   </div>
 
                 </form>
