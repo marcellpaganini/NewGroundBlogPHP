@@ -22,7 +22,7 @@
             </ul>
         </li>
         <li><a href=<?php echo "categories.php"?>>Categories</a></li>
-        <li><a href="#">Comments</a></li>
+        <li><a href="comment.php">Comments</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
           <ul class="dropdown-menu">
