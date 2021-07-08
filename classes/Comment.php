@@ -42,7 +42,7 @@ class Comment {
     }
 
     public function getComments() {
-        $query = mysqli_query($this->con, "SELECT * FROM comments ORDER BY id DESC;");
+        $query = mysqli_query($this->con, "SELECT * FROM comments ORDER BY id DESC LIMIT 20;");
         $str = "";
         while ($row = mysqli_fetch_array($query)) {
             $id = $row['id'];
