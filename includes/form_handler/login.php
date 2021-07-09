@@ -12,12 +12,14 @@
         $db_email = $row['email'];
         $db_pwd = $row['password'];
         $profile_pic = $row['profile_pic'];
+        $userName = $row['username'];
 
         $rehashpwd = md5($pwd);
 
         if($email === $db_email && $db_pwd === $rehashpwd) {
             $_SESSION['userLogged'] = $email;
             $_SESSION['profile_pic'] = $profile_pic;
+            $_SESSION['username'] = $username;
             header("Location: ../../admin");
         } else {
             $_SESSION['log_email'] = $email;

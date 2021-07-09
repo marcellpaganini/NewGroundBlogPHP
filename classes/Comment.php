@@ -1,4 +1,15 @@
 <?php 
+
+(isset($_SESSION['userLogged'])) ? $user = $_SESSION['userLogged'] :
+header("Location: ../../cms-admin.php"); 
+
+$sql = mysqli_query($dbLink, "SELECT * FROM users WHERE email = '$user';");
+$row = mysqli_fetch_array($sql);
+$username = $row['username'];
+$profile = $row['profile_pic'];
+$role = $row['role'];
+
+
 class Comment {
     private $con;
 
@@ -42,6 +53,7 @@ class Comment {
     }
 
     public function getComments() {
+        global $role;
         $query = mysqli_query($this->con, "SELECT * FROM comments ORDER BY id DESC LIMIT 20;");
         $str = "";
         while ($row = mysqli_fetch_array($query)) {
@@ -51,15 +63,30 @@ class Comment {
             $email = $row['comment_email'];
             $status = $row['status'];
             $post_id = $row['post_id'];
-
-            $str .= "<tr>
+            if($role !== "Admin") {
+                $str .= "<tr>
                      <td>$id</td>
                      <td>$name</td>
-                     <td>$body</td>
                      <td>$email</td>
+                     <td>$body</td>
                      <td>$status</td>
                      <td>$post_id</td>
                      </tr>";
+            } else {
+                $str .= "<tr>
+                     <td>$id</td>
+                     <td>$name</td>
+                     <td>$email</td>
+                     <td>$body</td>
+                     <td>$status</td>
+                     <td>$post_id</td>
+                     <td><a href='#' class='btn btn-primary'>Approve</a></td>
+                     <td><a href='#' class='btn btn-warning'>Unapprove</a></td>
+                     <td><a href='#' class='btn btn-danger'>Delete</a></td>
+                     </tr>";
+            }
+
+            
         }
         echo $str;
     }

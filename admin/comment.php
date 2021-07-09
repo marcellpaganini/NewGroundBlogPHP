@@ -8,12 +8,15 @@
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered">
             <thead>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Body</th>
-            <th>Status</th>
-            <th>Post ID</th>
+            <th class="text-center">ID</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Body</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Post ID</th>
+            <?php if($role === "Admin") {
+                echo '<th colspan="3" class="text-center">Action</th>';
+            } ?>
             </thead>
             <tbody>
             <?php 
