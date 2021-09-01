@@ -1,6 +1,14 @@
 <?php include "db.php"?>
 
-<?php 
+<?php
+
+    function redirect_to($location = NULL){
+        if($location != NULL){
+            header("Location: $location");
+            exit;
+        }
+    }
+
     function add_category(){
         global $dbLink;
 

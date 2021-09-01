@@ -2,7 +2,10 @@
 <?php session_start() ?>
 <?php include "db.php"?>
 <?php include "functions.php"?>
-<?php (isset($_SESSION['userLogged'])) ? $user = $_SESSION['userLogged'] :
+<?php 
+//$_SERVER['SCRIPT_FILENAME']
+
+(isset($_SESSION['userLogged'])) ? $user = $_SESSION['userLogged'] :
 header("Location: ../cms-admin.php"); 
 
 $sql = mysqli_query($dbLink, "SELECT * FROM users WHERE email = '$user';");

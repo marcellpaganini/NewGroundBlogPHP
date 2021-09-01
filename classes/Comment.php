@@ -1,7 +1,7 @@
 <?php 
 
 (isset($_SESSION['userLogged'])) ? $user = $_SESSION['userLogged'] :
-header("Location: ../../cms-admin.php"); 
+header("Location: cms-admin.php"); 
 
 $sql = mysqli_query($dbLink, "SELECT * FROM users WHERE email = '$user';");
 $row = mysqli_fetch_array($sql);
